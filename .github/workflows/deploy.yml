@@ -10,20 +10,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.1
-
-      - name: Setup Node.js v14.x
-        uses: actions/setup-node@v1
         with:
-          node-version: '14.x'
+          persist-credentials: false
 
-      - name: Install
-        run: npm install # 安装依赖
-
-      - name: Build
-        run: npm run build # 打包
+      - name: Install and Build # 下载依赖 打包项目
+          run: |
+            npm install
+            npm run build
 
       - name: Deploy
-        #uses: JamesIves/github-pages-deploy-action@v4 # 使用部署到 GitHub pages 的 action 使用别人写好的库
+        uses: JamesIves/github-pages-deploy-action@v4 # 使用部署到 GitHub pages 的 action 使用别人写好的库
         with:
           #TARGET_FOLDER: vue3-super-admin # 打包的文件将放到静态服务器 github-actions-demo 目录下
           ACCESS_TOKEN: ${{ secrets.VUE3_SUPER_ADMIN }}

@@ -27,7 +27,8 @@ app.use(pinia).use(store).use(router).use(ElementPlus).mount('#app');
 //  单选/复选框封装
 //  .jsx文件 css modules 隔离样式
 //  webpack 配置 改sass 取消less 预处理
-//  自动部署到github pages )
+//  自动部署到github pages
+//  element plus & formily 按需引入)
 /*
 * 集成formily https://element-plus.formilyjs.org/guide/form-grid.html#json-schema-%E6%A1%88%E4%BE%8B
 * 先实现template 模板的集成  JSON
