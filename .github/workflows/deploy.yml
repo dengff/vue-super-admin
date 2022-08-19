@@ -25,7 +25,7 @@ jobs:
       - name: Deploy
         #uses: JamesIves/github-pages-deploy-action@v4 # 使用部署到 GitHub pages 的 action 使用别人写好的库
         with:
-          TARGET_FOLDER: vue3-super-admin # 打包的文件将放到静态服务器 github-actions-demo 目录下
+          #TARGET_FOLDER: vue3-super-admin # 打包的文件将放到静态服务器 github-actions-demo 目录下
           ACCESS_TOKEN: ${{ secrets.VUE3_SUPER_ADMIN }}
           BRANCH: master
           FOLDER: dist
