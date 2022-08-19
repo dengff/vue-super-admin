@@ -1,25 +1,27 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+'use strict';
+import {createRouter, createWebHashHistory} from 'vue-router';
+import layout from 'src/views/layout/index';
+import {children} from './modules/index';
 
-const routes = [
+// console.log(children, 'routes');
+export const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    redirect: '/home/index',
+    component: layout,
+    // children: children,
   },
+  ...children,
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
-]
+    // 找不到路由重定向到404页面
+    path: '/:pathMatch(.*)',
+    redirect: {name: '404'},
+  },
+];
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;
