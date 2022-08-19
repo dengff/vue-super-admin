@@ -34,5 +34,5 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.VUE_SUPER_ADMIN }}
           BRANCH: uat
           FOLDER: dist
-          REPOSITORY_NAME: dengff/vue-super-admin.github.io # 这是我的 github page 地址
-          #TARGET_FOLDER: github-actions-demo # 打包的文件将放到静态服务器 github-actions-demo 目录下
+          REPOSITORY_NAME: dengff/vue-super-admin # 这是我的 github page 地址
+          TARGET_FOLDER: vue-super-admin # 打包的文件将放到静态服务器 github-actions-demo 目录下
