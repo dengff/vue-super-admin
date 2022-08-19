@@ -16,11 +16,17 @@ jobs:
         with:
           node-version: '14.20.0'
 
-      - name: Install and Build # 下载依赖 打包项目
-        with:
-        run: |
-          npm install
-          npm run build
+          #- name: Install and Build # 下载依赖 打包项目
+          # with:
+          # run: |
+          # npm install
+          # npm run build
+
+      - name: Install
+          run: npm install # 安装依赖
+
+      - name: Build
+          run: npm run build # 打包
 
       - name: Deploy # 将打包内容发布到 github page
         uses: JamesIves/github-pages-deploy-action@3.7.1 # 使用别人写好的 actions
