@@ -22,10 +22,10 @@ jobs:
         run: npm run build # 打包
 
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4 # 使用部署到 GitHub pages 的 action 使用别人写好的库
+        #uses: JamesIves/github-pages-deploy-action@v4 # 使用部署到 GitHub pages 的 action 使用别人写好的库
         with:
           TARGET_FOLDER: vue3-super-admin # 打包的文件将放到静态服务器 github-actions-demo 目录下
           ACCESS_TOKEN: ${{ secrets.VUE3_SUPER_ADMIN }}
           BRANCH: master
           FOLDER: dist
-          REPOSITORY_NAME: woai3c/woai3c.github.io # 这是我的 github page 地址
+          REPOSITORY_NAME: super-admin/super-admin.github.io # 这是我的 github page 地址
