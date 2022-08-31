@@ -30,7 +30,7 @@ import MenuItem from '../menu-item/index';
 
 import {computed, onMounted, ref} from 'vue';
 import {MenuStore} from '../../../store/modules/menu';
-import API from '../../../common/api';
+import API from '../../../common/service/api';
 import {useRoute} from 'vue-router';
 
 const menuStore = MenuStore();
@@ -39,7 +39,7 @@ const route = useRoute();
 const title = ref('ceshibiaoti');
 
 onMounted(async () => {
-  const res = await API.get('/geeker/menu/list');
+  const res = await API.GET_GEEKER_MENU_LIST();
   const mockList = [...Array(6)].map(item => {
     return {
       ...res.data[3],
@@ -54,7 +54,7 @@ onMounted(async () => {
     }, '');*/
 
   menuStore.setMenuList(menList);
-  console.log(menList, 'menList');
+  // console.log(menList, 'menList');
 
 });
 let defaultActive = computed(() => route.path);

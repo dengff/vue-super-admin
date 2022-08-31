@@ -86,7 +86,7 @@ export default {
 import {MenuStore} from 'src/store/modules/menu';
 import {TabsStore} from 'src/store/modules/tabs';
 import {onMounted, ref, reactive, defineComponent, toRefs, computed, watch} from 'vue';
-import API from 'src/common/api/index';
+import API from 'src/common/service/api';
 import {useRoute, useRouter} from 'vue-router';
 import {ArrowRight} from '@element-plus/icons-vue';
 import cacheRoute from 'src/router/cacheRouter';
@@ -96,7 +96,6 @@ import Handler from './header/index';
 const menuStore = MenuStore();
 const tabsStore = TabsStore();
 const tabsMenuList = computed(() => tabsStore.tabsMenuList);
-console.log(tabsMenuList, 'tabsMenuList');
 const tabsMenuValue = computed({
   get: () => {
     return tabsStore.tabsMenuValue;
@@ -105,7 +104,7 @@ const tabsMenuValue = computed({
     tabsStore.setTabsMenuValue(val);
   },
 });
-console.log(tabsMenuValue, 'tabsMenuValue');
+// console.log(tabsMenuValue, 'tabsMenuValue');
 
 const route = useRoute();
 const router = useRouter();
@@ -117,7 +116,8 @@ const isCollapse = computed(() => menuStore.isCollapse);
 const matched = computed(() => route.matched.filter(item => item?.meta?.title && item?.meta?.title !== '首页'));
 
 onMounted(async () => {
-  const res = await API.get('/geeker/menu/list');
+  const res = await API.GET_GEEKER_MENU_LIST();
+  // console.log(res,'res');
   const mockList = [...Array(6)].map(item => {
     return {
       ...res.data[3],

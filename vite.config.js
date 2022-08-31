@@ -49,6 +49,11 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
+      '/apiFox': {
+        target: 'https://mock.apifox.cn/m1/1225980-0-default',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/apiFox/, ''),
+      },
       '/TrendyScm-rest/rest': {
         target: 'https://test-scm.trendy-global.com',
         // 实际上我们的真正请求地址为 https://api.github.com/users 所有我们需要通过 pathRewrite 配置项进行重写路径

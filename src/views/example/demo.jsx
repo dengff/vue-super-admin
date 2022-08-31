@@ -1,5 +1,5 @@
 import {defineComponent, ref, onMounted, onBeforeMount} from 'vue';
-import API from '../../common/api';
+import API from '../../common/service/api';
 
 export default defineComponent(
   {
@@ -7,7 +7,7 @@ export default defineComponent(
     setup() {
       let menList = ref([]);
       onBeforeMount(async () => {
-        const res = await API.get('/geeker/menu/list');
+        const res = await API.GET_GEEKER_MENU_LIST();
         const mockList = [...Array(6)].map(item => {
           return {
             ...res.data[3],

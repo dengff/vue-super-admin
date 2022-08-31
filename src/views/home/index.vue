@@ -25,7 +25,7 @@
 <script>
 import {defineComponent, reactive, resolveComponent} from 'vue';
 import demo from '../example/demo.jsx';
-import {menuList} from 'src/common/api/JSON';
+import {menuList} from 'src/common/service/JSON';
 
 export default defineComponent({
   components: {

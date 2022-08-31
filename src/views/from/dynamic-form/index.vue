@@ -1,64 +1,22 @@
 <template>
-  <div>
-    <FormProvider :form="form">
-      <Space>
-        <Field
-            name="price"
-            title="价格"
-            :initialValue="20"
-            :decorator="[FormItem]"
-            :component="[
-          InputNumber,
-          {
-            placeholder: '请输入',
-            style: {
-              width: 100,
-            },
-          },
-        ]"
-        />
-        <FormItem>×</FormItem>
-        <Field
-            name="count"
-            title="数量"
-            :initialValue="100"
-            :decorator="[FormItem]"
-            :component="[
-          InputNumber,
-          {
-            placeholder: '请输入',
-            style: {
-              width: 100,
-            },
-          },
-        ]"
-        />
-        <FormConsumer>
-          <template #default="{ form }">
-            <FormItem>
-              = {{ `${form.values.price * form.values.count} 元` }}
-            </FormItem
-            >
-          </template>
-        </FormConsumer>
-      </Space>
-    </FormProvider>
-  </div>
+ <div style="padding: 12px">
+   <el-tabs v-model="activeName" class="demo-tabs" @tab-click="()=>{}">
+     <el-tab-pane label="Schema Json" name="Schema">
+       <SchemaDynForm></SchemaDynForm>
+     </el-tab-pane>
+     <el-tab-pane label="Template" name="Template">
+       <TemplateDynForm></TemplateDynForm>
+     </el-tab-pane>
+   </el-tabs>
+ </div>
 </template>
 
+
 <script setup>
-import {createForm} from '@formily/core';
-import {InputNumber, FormItem, Space} from '@formily/element-plus';
-import {FormProvider, FormConsumer, Field} from '@formily/vue';
-import {onRenderTracked, onRenderTriggered} from 'vue';
+import {ref} from 'vue';
+import SchemaDynForm from './components/schema-dynForm/schema-dynForm';
+import TemplateDynForm from './components/template-dynForm/template-dynForm';
 
-onRenderTracked((event) => {
-  debugger
-});
+const activeName = ref('Template');
 
-onRenderTriggered((event) => {
-  debugger
-});
-
-const form = createForm();
 </script>
