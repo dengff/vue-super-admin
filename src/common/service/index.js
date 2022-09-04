@@ -1,18 +1,21 @@
 import axios, {AxiosInstance} from 'axios';
 import {ElMessage, ElLoading} from 'element-plus';
+import {hexToRgb} from '../utils/theme/tool';
 // import { jumpLogin, downloadFile } from "@/utils";
 
 let loadingInstance = null;
 let requestNum = 0;
-
+const GlobalStore = JSON.parse(localStorage.getItem('GlobalStore'));
+const {primary = '#630ca9'} = GlobalStore.themeConfig;
+const color = hexToRgb(primary);
 const addLoading = () => {
   // 增加loading 如果pending请求数量等于1，弹出loading, 防止重复弹出
   requestNum++;
   if (requestNum === 1) {
     loadingInstance = ElLoading.service({
       fullscreen: true,
-      text: '正在努力加载中....',
-      background: 'rgba(99,12,169,0.11)',
+      text: '正在努力加载中....', // 99,12,169
+      background: `rgba(${color},0.11)`,
     });
   }
 };

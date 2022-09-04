@@ -26,9 +26,10 @@ export default {
 </script>
 <script setup>
 import MenuItem from '../menu-item/index';
+import {menuList} from '../../../common/service/JSON';
 // import MenuItem from '../menu-item/MenuItem';
 
-import {computed, onMounted, ref} from 'vue';
+import {computed, onMounted, reactive, ref} from 'vue';
 import {MenuStore} from '../../../store/modules/menu';
 import API from '../../../common/service/api';
 import {useRoute} from 'vue-router';
@@ -37,15 +38,16 @@ const menuStore = MenuStore();
 // let menList = ref([]);
 const route = useRoute();
 const title = ref('ceshibiaoti');
-
+const menuLists = reactive(menuList)
 onMounted(async () => {
-  const res = await API.GET_GEEKER_MENU_LIST();
-  const mockList = [...Array(6)].map(item => {
-    return {
-      ...res.data[3],
-    };
-  });
-  const menList = [...res.data];
+  // const res = await API.GET_GEEKER_MENU_LIST();
+  // const mockList = [...Array(6)].map(item => {
+  //   return {
+  //     ...res.data[3],
+  //   };
+  // });
+  // const menList = [...res.data];
+
   /*  defaultActive.value = menList.reduce((pre, cur) => {
       if (cur.path.indexOf(route.path) > -1) {
         pre = cur.path;
@@ -53,7 +55,7 @@ onMounted(async () => {
       return pre;
     }, '');*/
 
-  menuStore.setMenuList(menList);
+  menuStore.setMenuList(menuLists);
   // console.log(menList, 'menList');
 
 });

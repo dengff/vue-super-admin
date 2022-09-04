@@ -189,7 +189,7 @@ export const schemaConfig = {
           title:'异步选择',
           "x-decorator": 'FormItem',
           'x-component': 'Select',
-          'x-reactions':['{{useAsyncDataSource(loadData)}}'] // 异步联动数据
+          'x-reactions':['{{useAsyncDataSource1(loadData)}}'] // 异步联动数据
         }
       },
     },

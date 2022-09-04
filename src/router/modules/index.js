@@ -97,7 +97,7 @@ export const children = [
     },
     children: [
       {
-        path: 'guide',
+        path: 'grid-layout',
         name: 'grid-layout',
         component: () => import('src/views/assembly/grid-layout'),
         meta: {
@@ -107,8 +107,40 @@ export const children = [
           key: 'grid-layout',
         },
       },
+      {
+        path: 'search-panel',
+        name: 'search-panel',
+        component: () => import('src/views/assembly/search-panel'),
+        meta: {
+          keepAlive: true,
+          requiresAuth: true,
+          title: '查询组件',
+          key: 'search-panel',
+        },
+      },
     ],
   },
+  /*{
+    path: '/proTable',
+    component: layout,
+    redirect: '/proTable/component-table',
+    meta: {
+      title: '超级表格',
+    },
+    children: [
+      {
+        path: 'component-table',
+        name: 'component-table',
+        component: () => import('src/views/assembly/grid-layout'),
+        meta: {
+          keepAlive: true,
+          requiresAuth: true,
+          title: 'component-表格',
+          key: 'component-table',
+        },
+      },
+    ],
+  },*/
 
 ];
 

@@ -1,7 +1,7 @@
 <template>
   <div>
     <FormProvider :form="form" style="padding: 12px">
-      <SchemaField :schema="schema" :scope="{ useAsyncDataSource, loadData }"/>
+      <SchemaField :schema="schema" :scope="{ useAsyncDataSource1, loadData }"/>
       <GridLayout>
         <cell justify="end">
           <FormButtonGroup align-right>
@@ -50,6 +50,7 @@ import {
 import {schemaConfig} from './config';
 
 const useAsyncDataSource = (service) => (field) => {
+  console.log(field,'field');
   field.loading = true;
   service(field).then(
       action.bound((data) => {
@@ -58,6 +59,19 @@ const useAsyncDataSource = (service) => (field) => {
       }),
   );
 };
+
+const useAsyncDataSource1 = function(service){
+  return (field) =>{
+    field.loading = true;
+    service(field).then(
+        action.bound((data) => {
+          field.dataSource = data;
+          field.loading = false;
+        }),
+    );
+  }
+
+}
 const loadData = async (field) => {
   const linkage = field.query('selectComponent').get('value');
   if (!linkage) return [];
