@@ -111,10 +111,6 @@
     "webpack-merge": "5.8.0",
     "webpackbar": "^5.0.2"
   },
-  "engines": {
-    "node": ">= 4.0.0",
-    "npm": ">= 3.0.0"
-  },
   "sideEffects": [
     "*.css",
     "*.vue"
